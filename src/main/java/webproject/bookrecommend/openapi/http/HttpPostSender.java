@@ -28,6 +28,7 @@ public class HttpPostSender implements HttpMessageSender {
 
         StringEntity inputEntity = new StringEntity(openApiHttpVo.getApiData().get("content"), ContentType.APPLICATION_JSON);
 
+
         // Build POST request
         HttpPost post = new HttpPost(openApiHttpVo.getApiData().get("url"));
         post.setEntity(inputEntity);
