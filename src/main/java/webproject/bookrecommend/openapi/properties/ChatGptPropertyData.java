@@ -1,15 +1,17 @@
-package webproject.bookrecommend.openapi.data;
+package webproject.bookrecommend.openapi.properties;
 
 
 import lombok.Getter;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import webproject.bookrecommend.openapi.data.OpenApiData;
+import webproject.bookrecommend.openapi.data.OpenApiHttpVo;
 import webproject.bookrecommend.openapi.properties.ChatGptProperties;
 
 import java.util.HashMap;
 
 @Getter
-public class ChatGptData implements OpenApiData {
+public class ChatGptPropertyData implements OpenApiData {
 
     private String apikey;
     private String url;
@@ -17,7 +19,7 @@ public class ChatGptData implements OpenApiData {
     private String model;
     private double temperature;
 
-    public ChatGptData(ChatGptProperties chatGptProperties) {
+    public ChatGptPropertyData(ChatGptProperties chatGptProperties) {
         this.apikey = chatGptProperties.getApikey();
         this.url = chatGptProperties.getUrl();
         this.role = chatGptProperties.getRole();

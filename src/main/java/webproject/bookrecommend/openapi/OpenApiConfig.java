@@ -6,8 +6,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import webproject.bookrecommend.openapi.data.ChatGptData;
-import webproject.bookrecommend.openapi.data.NaverBookData;
+import webproject.bookrecommend.openapi.properties.ChatGptPropertyData;
+import webproject.bookrecommend.openapi.properties.NaverBookPropertyData;
 import webproject.bookrecommend.openapi.properties.ChatGptProperties;
 import webproject.bookrecommend.openapi.properties.NaverBookProperties;
 
@@ -18,15 +18,12 @@ public class OpenApiConfig {
 
     private final ChatGptProperties chatGptProperties;
     private final NaverBookProperties naverBookProperties;
-    private final ApplicationContext applicationContext;
     @Bean
-    public ChatGptData chatGptData(){
-        return new ChatGptData(chatGptProperties);
-    }
+    public ChatGptPropertyData chatGptPropertyData(){ return new ChatGptPropertyData(chatGptProperties); }
     @Bean
-    public NaverBookData naverBookData() { return new NaverBookData(naverBookProperties); }
+    public NaverBookPropertyData naverBookPropertyData() { return new NaverBookPropertyData(naverBookProperties); }
     @Bean
-    public OpenApiDataFactory openApiDataFactory(){ return new OpenApiDataFactory(applicationContext); }
+    public OpenApiDataFactory openApiDataFactory(){ return new OpenApiDataFactory(chatGptPropertyData(),naverBookPropertyData()); }
     @Bean
     public OpenApiMachine openApiMachine(){ return new OpenApiMachine(openApiDataFactory()); }
 

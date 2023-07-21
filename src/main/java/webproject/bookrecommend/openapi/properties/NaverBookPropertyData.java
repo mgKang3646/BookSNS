@@ -1,6 +1,8 @@
-package webproject.bookrecommend.openapi.data;
+package webproject.bookrecommend.openapi.properties;
 
 import lombok.Getter;
+import webproject.bookrecommend.openapi.data.OpenApiData;
+import webproject.bookrecommend.openapi.data.OpenApiHttpVo;
 import webproject.bookrecommend.openapi.properties.NaverBookProperties;
 
 import java.io.UnsupportedEncodingException;
@@ -8,7 +10,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 
 @Getter
-public class NaverBookData implements OpenApiData {
+public class NaverBookPropertyData implements OpenApiData {
 
     private String clientId;
     private String clientSecret;
@@ -16,7 +18,7 @@ public class NaverBookData implements OpenApiData {
     private int start;
     private int display;
 
-    public NaverBookData(NaverBookProperties naverBookProperties) {
+    public NaverBookPropertyData(NaverBookProperties naverBookProperties) {
         this.clientId = naverBookProperties.getClientId();
         this.clientSecret = naverBookProperties.getClientSecret();
         this.url = naverBookProperties.getUrl();
